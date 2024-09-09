@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="D:\BT_hau\index.css">
+</head>
+<body>
+    <div class="container">
+        <h3>BANG DIEM CUA EM</h3>
+        <div class="item">
+            <label for="se1">Semester 1:</label>
+            <input type="text" id="se1">
+        </div>
+        <div class="item">
+            <label for="se2">Semester 2:</label>
+            <input type="text" id="se2">
+        </div>
+        <div class="item1">
+            <label for="year">Year:</label>
+            <select id="year">
+                <option value="">Years</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+        <div class="item">
+            <label for="result">Sum:</label>
+            <input type="text" id="result" readonly>
+        </div>
+        <div class="item-button">
+            <button onclick="calculate()">Ok</button>
+            <button type="reset" onclick="cancel()">Cancel</button>
+        </div>
+        <div class="classification" id="classification"></div>
+    </div>
+    <script>
+        function calculate() {
+            var semester1 = parseFloat(document.getElementById('se1').value);
+            var semester2 = parseFloat(document.getElementById('se2').value);
+            var summary = (semester1 + semester2) / 2;
+            var resultElement = document.getElementById('result');
+            var classificationElement = document.getElementById('classification');
+            resultElement.value = summary.toFixed(2);
+
+
+            if (summary >= 9) {
+                classificationElement.innerHTML = "Học sinh giỏi";
+                classificationElement.style.color = 'red';
+            } else if (summary >= 7) {
+                classificationElement.innerHTML = "Học sinh khá";
+                classificationElement.style.color = 'yellow';
+            } else if (summary >= 5) {
+                classificationElement.innerHTML = "Học sinh trung bình";
+                classificationElement.style.color = 'green';
+            } else {
+                classificationElement.innerHTML = "Học sinh yếu rồi";
+                classificationElement.style.color = 'blue';
+            }
+        }
+
+
+        function cancel() {
+            document.getElementById('se1').value = "";
+            document.getElementById('se2').value = "";
+            document.getElementById('result').value = "";
+            document.getElementById('classification').innerHTML = "";
+        }
+    </script>
+
+</body>
+</html>
